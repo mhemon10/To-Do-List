@@ -6,11 +6,11 @@
 }
 
 :root {
-  --background: #000430;
-  --secondaryBackground: #171c48;
+  --background: #18230F;
+  --secondaryBackground: #27391C;
   --text: #ffffff;
-  --purple: #828dff;
-  --teal: #24feee;
+  --purple: #1F7D53;
+  --teal: #57B4BA;
 }
 
 body {
@@ -142,7 +142,7 @@ button:hover{
 }
 
 .taskItem:hover {
-  background-color: #1f255f;
+  background-color: #2D4F2B;
 }
 
 .task {
