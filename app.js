@@ -1,4 +1,9 @@
+
 let tasks = [];
+
+const saveTasks = () => {
+    localStorage.setItem('task', JSON.stringify(tasks));
+};
 
 const addTask = () => {
   const taskInput = document.getElementById("taskInput");
@@ -9,9 +14,52 @@ const addTask = () => {
   }
 
     updateTaskList();
+    updateStates();
+    
 };
 
-const 
+const toggleTestComplete = (index) => {
+    tasks[index].completed = !tasks[index].completed;
+    updateTaskList();
+    updateStates();
+    saveTasks();
+
+}
+
+//for dellet task
+const deleteTask = (index) => {
+    tasks.splice(index, 1);
+    updateTaskList();
+    updateStates();
+    saveTasks();
+
+}
+
+//edit functionality
+
+const editTask = (index) => {
+  const taskInput = document.getElementById("taskInput");
+  taskInput.value = tasks[index].text;
+  tasks.splice(index, 1);
+    updateTaskList();
+    updateStates();
+    saveTasks();
+
+};
+
+//Update States
+const updateStates = () => {
+  const completeTasks = tasks.filter((task) => task.completed).length;
+  const totalTasks = tasks.length;
+  const progress = totalTasks === 0 ? 0 : (completeTasks / totalTasks) * 100;
+
+  const progressBar = document.getElementById("progress");
+  progressBar.style.width = `${progress}%`;
+
+  const numbersText = document.getElementById("numbers");
+  numbersText.textContent = `${completeTasks} / ${totalTasks}`;
+};
+
 
 const updateTaskList = () => {
     const taskList = document.getElementById('task-list')
